@@ -1,0 +1,15 @@
+# server/.env file (SECRET KEYS - KABHI UPLOAD NA KAREIN)
+server/.env
+
+# Server node_modules folder
+server/node_modules
+
+# Client node_modules folder
+client/node_modules
+
+# Vite build folder (jo baad mein banegi)
+client/dist
+
+# OS system files
+.DS_Store
+Thumbs.db

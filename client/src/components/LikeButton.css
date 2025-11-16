@@ -1,0 +1,54 @@
+/* client/src/components/LikeButton.css */
+
+.like-section {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.like-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.like-button {
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.like-button:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+.like-button.liked {
+    fill: #e0245e;
+    stroke: #e0245e;
+}
+
+.like-count {
+    font-weight: 600;
+    color: #333;
+}
+
+.login-prompt {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+    font-style: italic;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+.like-section:hover {
+    background: #f1f3f4;
+    transition: background-color 0.2s ease;
+}
