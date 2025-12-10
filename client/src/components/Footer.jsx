@@ -15,7 +15,11 @@ const Footer = () => {
     return (
         <footer style={footerStyle}>
             <p>&copy; {new Date().getFullYear()} BlogCity. All Rights Reserved.</p>
+<<<<<<< HEAD
             <p>A Full-Stack MERN Project</p>
+=======
+            <p>Abid Ali Jamali's project</p>
+>>>>>>> 2d96f5df923e9cee0173950bf1419661c487bd80
         </footer>
     );
 };

@@ -18,6 +18,15 @@ const postSchema = new mongoose.Schema(
             required: false,
             default: 'Admin',
         },
+<<<<<<< HEAD
+=======
+        // User association for authentication
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+            required: false
+        },
+>>>>>>> 2d96f5df923e9cee0173950bf1419661c487bd80
         // --- YEH NAYA ADD HUA HAI ---
         featuredImage: {
             public_id: { type: String, required: false }, // Cloudinary se milega

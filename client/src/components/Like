@@ -1,0 +1,93 @@
+// client/src/components/LikeButton.jsx
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useAuth } from '../context/AuthContext';
+import { Heart } from 'lucide-react';
+
+const LikeButton = ({ postId }) => {
+    const { user } = useAuth();
+    const [likeCount, setLikeCount] = useState(0);
+    const [isLiked, setIsLiked] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    // Fetch like information when component mounts
+    useEffect(() => {
+        if (user && postId) {
+            fetchLikeInfo();
+        }
+    }, [user, postId]);
+
+    const fetchLikeInfo = async () => {
+        try {
+            const response = await axios.get(`/api/posts/${postId}/like-info`);
+            setLikeCount(response.data.likeCount);
+            setIsLiked(response.data.isLiked);
+        } catch (err) {
+            console.error('Error fetching like info:', err);
+        }
+    };
+
+    const handleLikeClick = async () => {
+        if (!user) {
+            setError('Please login to like posts');
+            return;
+        }
+
+        try {
+            setLoading(true);
+            setError(null);
+
+            if (isLiked) {
+                // Unlike the post
+                const response = await axios.delete(`/api/posts/${postId}/like`);
+                setIsLiked(false);
+                setLikeCount(response.data.likeCount);
+            } else {
+                // Like the post
+                const response = await axios.post(`/api/posts/${postId}/like`);
+                setIsLiked(true);
+                setLikeCount(response.data.likeCount);
+            }
+        } catch (err) {
+            console.error('Error toggling like:', err);
+            setError(err.response?.data?.message || 'Error updating like');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    if (!user) {
+        return (
+            <div className="like-section">
+                <div className="like-info">
+                    <Heart size={20} />
+                    <span>{likeCount} likes</span>
+                    <p className="login-prompt">Login to like this post</p>
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <div className="like-section">
+            <div className="like-info">
+                <Heart 
+                    size={24} 
+                    className={`like-button ${isLiked ? 'liked' : ''}`}
+                    onClick={!loading ? handleLikeClick : null}
+                    style={{ 
+                        cursor: loading ? 'not-allowed' : 'pointer',
+                        fill: isLiked ? '#e0245e' : 'none',
+                        stroke: isLiked ? '#e0245e' : '#666'
+                    }}
+                />
+                <span className="like-count">{likeCount} likes</span>
+            </div>
+            {error && <p className="error-message">{error}</p>}
+        </div>
+    );
+};
+
+export default LikeButton;

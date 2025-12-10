@@ -1,15 +1,25 @@
 // src/pages/EditPostPage.jsx
 
 import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+=======
+// import axios from 'axios'; // <-- YEH HATA RAHE HAIN
+import { useParams, useNavigate } from 'react-router-dom';
+import api from '../context/AuthContext'; // <-- YEH ADD KAREIN (Authenticated API)
+>>>>>>> 2d96f5df923e9cee0173950bf1419661c487bd80
 
 const EditPostPage = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+<<<<<<< HEAD
     const [author, setAuthor] = useState('');
+=======
+    const [author, setAuthor] = useState(''); // Yeh field ab shayad zaroori nahi agar backend user se le raha hai
+>>>>>>> 2d96f5df923e9cee0173950bf1419661c487bd80
     const [newImage, setNewImage] = useState(null); 
     const [oldImage, setOldImage] = useState(''); 
     const [loading, setLoading] = useState(true);
@@ -19,7 +29,12 @@ const EditPostPage = () => {
         const fetchPost = async () => {
             try {
                 setLoading(true);
+<<<<<<< HEAD
                 const response = await axios.get(`/api/posts/${id}`);
+=======
+                // 'axios.get' ko 'api.get' se badlein
+                const response = await api.get(`/posts/${id}`); // <-- CHANGE YAHAN HAI
+>>>>>>> 2d96f5df923e9cee0173950bf1419661c487bd80
                 const post = response.data;
                 setTitle(post.title);
                 setContent(post.content);
@@ -49,17 +64,31 @@ const EditPostPage = () => {
         }
 
         try {
+<<<<<<< HEAD
             await axios.put(`/api/posts/${id}`, formData, {
                 headers: { 'Content-Type': 'multipart-form-data' },
+=======
+            // 'axios.put' ko 'api.put' se badlein
+            await api.put(`/posts/${id}`, formData, { // <-- CHANGE YAHAN HAI
+                headers: { 'Content-Type': 'multipart/form-data' },
+>>>>>>> 2d96f5df923e9cee0173950bf1419661c487bd80
             });
             setLoading(false);
             navigate(`/post/${id}`); 
         } catch (err) {
             setLoading(false);
+<<<<<<< HEAD
             setError('Error updating post. Please check fields.');
         }
     };
 
+=======
+            setError(err.response?.data?.message || 'Error updating post. Please check fields.');
+        }
+    };
+
+    // Baaki UI (return) waisa hi rahega
+>>>>>>> 2d96f5df923e9cee0173950bf1419661c487bd80
     if (loading && !title) { 
         return <div style={{ padding: '20px' }}><h1>Loading post data...</h1></div>;
     }
@@ -74,7 +103,10 @@ const EditPostPage = () => {
                 </div>
             )}
             <form onSubmit={handleSubmit}>
+<<<<<<< HEAD
                 {/* Baaki form fields (Title, Content, Image) */}
+=======
+>>>>>>> 2d96f5df923e9cee0173950bf1419661c487bd80
                  <div style={{ marginBottom: '15px' }}>
                     <label>Title:</label><br />
                     <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required style={{ width: '100%', padding: '8px' }} />
