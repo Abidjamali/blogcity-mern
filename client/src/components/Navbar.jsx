@@ -1,32 +1,5 @@
 // src/components/Navbar.jsx
 
-<<<<<<< HEAD
-import React from 'react';
-import { Link } from 'react-router-dom';
-
-const Navbar = () => {
-    return (
-        <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            {}
-            <div>
-                <Link to="/" style={{ textDecoration: 'none' }}>
-                    {}
-                    <img 
-                        src="/logo.png"
-                        alt="BlogCity Logo" 
-                        style={{ height: '150px', width: 'auto', display: 'block' }} // Height control karein
-                    />
-                </Link>
-            </div>
-            <ul>
-                <li style={{ display: 'inline-block', marginLeft: '20px' }}>
-                    <Link to="/">Home</Link>
-                </li>
-                <li style={{ display: 'inline-block', marginLeft: '20px' }}>
-                    <Link to="/create">Create New Post</Link>
-                </li>
-            </ul>
-=======
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -40,8 +13,6 @@ const Navbar = () => {
         setShowDropdown(false);
     };
 
-    // --- YEH HUMNE FIX KIYA HAI ---
-    // Pehle check karein 'user' hai, phir 'profilePicture' hai, phir 'url' hai.
     const profileImageUrl = user?.profilePicture?.url || '/default-avatar.png';
 
     return (
@@ -49,7 +20,7 @@ const Navbar = () => {
             <div style={styles.left}>
                 <Link to="/" style={{ textDecoration: 'none' }}>
                     <img
-                        src="/logo.png" // (Yeh pehle se theek tha)
+                        src="/logo.png"
                         alt="BlogCity Logo"
                         style={styles.logo}
                     />
@@ -78,12 +49,10 @@ const Navbar = () => {
                                         style={styles.userButton}
                                     >
                                         <img
-                                            // --- YEH HUMNE FIX KIYA HAI ---
-                                            src={profileImageUrl} 
+                                            src={profileImageUrl}
                                             alt={user.username}
                                             style={styles.avatar}
                                             onError={(e) => {
-                                                // Agar Cloudinary link bhi fail ho, tab default dikhayein
                                                 e.target.src = '/default-avatar.png';
                                             }}
                                         />
@@ -121,7 +90,7 @@ const Navbar = () => {
                             </li>
                         </>
                     ) : (
-                        // ... (Login/Register ke links waise hi rahenge)
+                        // Login/Register links
                         <>
                             <li style={styles.li}>
                                 <Link to="/login" style={styles.link}>
@@ -137,13 +106,10 @@ const Navbar = () => {
                     )}
                 </ul>
             </div>
->>>>>>> 2d96f5df923e9cee0173950bf1419661c487bd80
         </nav>
     );
 };
 
-<<<<<<< HEAD
-=======
 // (Neeche ka poora 'styles' object waisa hi rahega)
 const styles = {
     nav: {
@@ -274,6 +240,4 @@ styles.dropdownItem.onMouseEnter = (e) => { e.target.style.backgroundColor = '#f
 styles.dropdownItem.onMouseLeave = (e) => { e.target.style.backgroundColor = 'transparent'; };
 styles.logoutButton.onMouseEnter = (e) => { e.target.style.backgroundColor = '#f8f9fa'; };
 styles.logoutButton.onMouseLeave = (e) => { e.target.style.backgroundColor = 'transparent'; };
-
->>>>>>> 2d96f5df923e9cee0173950bf1419661c487bd80
 export default Navbar;
