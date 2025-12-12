@@ -20,12 +20,10 @@ api.interceptors.request.use((config) => {
 });
 
 export const AuthProvider = ({ children }) => {
-    // [Rest of the AuthProvider code waisa hi rahega]
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // Check if user is logged in
     useEffect(() => {
         checkAuthStatus();
     }, []);
@@ -38,7 +36,6 @@ export const AuthProvider = ({ children }) => {
                 setUser(response.data.user);
             }
         } catch (error) {
-            // Handle error, e.g., token invalid
             localStorage.removeItem('token');
             setUser(null);
         } finally {
@@ -46,16 +43,13 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    const register = async (userData) => { /* ... */ };
-    const login = async (credentials) => { /* ... */ };
-    
+    const register = async (userData) => { /* ... (register function yahan rahega) */ };
+    const login = async (credentials) => { /* ... (login function yahan rahega) */ };
     const logout = () => {
         localStorage.removeItem('token');
         setUser(null);
-        // Optionally redirect or show message
     };
-
-    const updateProfile = async (formData) => { /* ... */ };
+    const updateProfile = async (formData) => { /* ... (updateProfile function yahan rahega) */ };
 
 
     const value = {

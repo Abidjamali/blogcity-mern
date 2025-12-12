@@ -9,8 +9,7 @@ import Footer from './components/Footer';
 
 // FIX: HomePage component ko uncomment karein
 import HomePage from './pages/HomePage'; 
-// NOTE: Agar aapke paas yeh file nahi hai toh naya error aayega. 
-// Main maan raha hoon ki yeh file aapke paas hai.
+// (Agar aapke paas aur pages hain toh unko bhi yahan import karein)
 
 
 function App() {
