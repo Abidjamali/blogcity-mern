@@ -1,28 +1,29 @@
+// client/src/App.jsx - FINAL CORRECT CODE
+
 import React from 'react';
-// BrowserRouter ko yahan se hata diya gaya hai, sirf Routes aur Route hain
+// FIX: BrowserRouter ko yahan se hata diya gaya hai
 import { Routes, Route } from 'react-router-dom'; 
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
-// Zaroori: HomePage component ko uncomment kar dein
+// FIX: HomePage component ko uncomment karein
 import HomePage from './pages/HomePage'; 
-// (Agar aapke paas aur pages hain toh unko bhi yahan import karein, jaise Login/Register)
+// NOTE: Agar aapke paas yeh file nahi hai toh naya error aayega. 
+// Main maan raha hoon ki yeh file aapke paas hai.
 
 
 function App() {
   return (
-    // <> fragment ka use kiya gaya hai kyunki Router main.jsx mein hai
+    // FIX: Router tags yahan se hata diye gaye hain
     <> 
       <Navbar />
-      <main> {/* main tag mein poora content wrap kar dein for index.css to work */}
+      <main>
         <Routes>
-          {/* Default Home Page route */}
+          {/* FIX: Default Home Page route ko uncomment karein */}
           <Route path="/" element={<HomePage />} /> 
           
-          {/* Aapke doosre routes yahan add honge, jaise: */}
-          {/* <Route path="/login" element={<LoginPage />} /> */}
-          {/* <Route path="/create" element={<CreatePostPage />} /> */}
+          {/* Aapke doosre routes (Login, Register, etc.) yahan aayenge */}
           
         </Routes>
       </main>

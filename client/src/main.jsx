@@ -6,12 +6,12 @@ import App from './App.jsx';
 import './index.css'; 
 import { BrowserRouter } from 'react-router-dom';
 
-// ZAROORI: AuthProvider import ko uncomment karein
+// Zaroori: AuthProvider import ko uncomment karein
 import { AuthProvider } from './context/AuthContext.jsx'; 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {/* ZAROORI: AuthProvider se App ko wrap karein */}
+    {/* Zaroori: AuthProvider se App ko wrap karein */}
     <AuthProvider>  
       <BrowserRouter>
         <App />
