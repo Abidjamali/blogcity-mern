@@ -5,9 +5,9 @@ import axios from 'axios';
 
 const AuthContext = createContext();
 
-// FIX: baseURL ko environment variable se badlein (Vercel ke liye)
+// FIX: baseURL ko Vercel environment variable se badlein
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL // <--- YEH FIX HAI!
+    baseURL: import.meta.env.VITE_API_URL // <-- YEH FIX ZAROORI THA
 });
 
 // Add token to requests (waisa hi rahega)
@@ -20,6 +20,7 @@ api.interceptors.request.use((config) => {
 });
 
 export const AuthProvider = ({ children }) => {
+    // [Rest of the AuthProvider code waisa hi rahega]
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -43,24 +44,18 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    const register = async (userData) => { /* ... (register function yahan rahega) */ };
-    const login = async (credentials) => { /* ... (login function yahan rahega) */ };
+    // [Register, login, logout, updateProfile functions yahan hain]
+    const register = async (userData) => { /* ... */ };
+    const login = async (credentials) => { /* ... */ };
     const logout = () => {
         localStorage.removeItem('token');
         setUser(null);
     };
-    const updateProfile = async (formData) => { /* ... (updateProfile function yahan rahega) */ };
+    const updateProfile = async (formData) => { /* ... */ };
 
 
     const value = {
-        user,
-        loading,
-        error,
-        register,
-        login,
-        logout,
-        updateProfile, 
-        checkAuthStatus
+        user, loading, error, register, login, logout, updateProfile, checkAuthStatus
     };
 
     return (

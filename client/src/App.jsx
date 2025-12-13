@@ -7,7 +7,7 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
-// FIX: HomePage component ko uncomment karein
+// NOTE: Ensure this file exists: client/src/pages/HomePage.jsx
 import HomePage from './pages/HomePage'; 
 // (Agar aapke paas aur pages hain toh unko bhi yahan import karein)
 

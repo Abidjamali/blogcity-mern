@@ -6,7 +6,7 @@ import App from './App.jsx';
 import './index.css'; 
 import { BrowserRouter } from 'react-router-dom';
 
-// FIX: AuthProvider import ko uncomment karein
+// FIX: AuthProvider import
 import { AuthProvider } from './context/AuthContext.jsx'; 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
